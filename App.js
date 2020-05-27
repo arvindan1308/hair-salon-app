@@ -7,7 +7,8 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
   ScrollView,
-  Alert
+  Alert,
+  StatusBar
 } from 'react-native';
 //import * as firebase from 'firebase';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
@@ -16,6 +17,11 @@ import Firebase from './src/config/firebase';
 import Logo from './src/components/Logo';
 import SignUp from './src/pages/SignUp';
 import Dashboard from './src/pages/Dashboard';
+import salon1 from './src/pages/salon1';
+import salon2 from './src/pages/salon2';
+import salon3 from './src/pages/salon3';
+import salon4 from './src/pages/salon4';
+import salon5 from './src/pages/salon5';
 
 import colors from './colors';
 class App extends React.Component {
@@ -46,6 +52,11 @@ class App extends React.Component {
     return (
       <View style={styles.container}>
         <Logo />
+        <StatusBar
+          backgroundColor="black"
+          barStyle="light-content"
+          translucent = {true}
+          />
         <KeyboardAvoidingView
           style={styles.container}
           behavior='padding'
@@ -102,9 +113,23 @@ const AppNavigator = createStackNavigator(
     SignUp: {
       screen: SignUp
     },
-
     Dashboard: {
       screen: Dashboard
+    },
+    salon1:{
+      screen:salon1
+    },
+    salon2:{
+      screen:salon2
+    },
+    salon3:{
+      screen:salon3
+    },
+    salon4:{
+      screen:salon4
+    },
+    salon5:{
+      screen:salon5
     }
   },
   {

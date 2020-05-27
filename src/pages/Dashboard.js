@@ -1,6 +1,6 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet} from 'react-native';
 import * as firebase from 'firebase';
 
 import Book from '../pages/Book';
@@ -81,10 +81,12 @@ export default createMaterialBottomTabNavigator(
   },
   {
     initialRouteName: 'Book',
-    activeColor: colors.buttonColor,
+    activeColor:'grey',
     inactiveColor: '#8e8e8e',
-    barStyle: { backgroundColor: 'white' },
+    barStyle: { backgroundColor: 'black' },
     shifting: 'true',
-    labeled: 'true'
+    labeled: 'true',
+    swipeEnabled:true,
+    animationEnabled:true
   }
 );

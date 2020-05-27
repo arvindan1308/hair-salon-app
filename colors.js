@@ -3,5 +3,5 @@ export default colors = {
   secondaryColor: '',
   bgColor: '#FEFEFE',
   bgHighLightColor: '',
-  buttonColor: '#2A2A2A'
+  buttonColor: 'black'
 };

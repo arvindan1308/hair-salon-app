@@ -34,6 +34,7 @@ class SignUp extends Component {
         .auth()
         .createUserWithEmailAndPassword(this.state.email, this.state.password)
         .catch(error => this.setState({ errorMessage: error.message }));
+        this.props.navigation.navigate('Login')
     } else {
       Alert.alert(
         'Sign Up Failed',
