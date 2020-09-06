@@ -6,9 +6,6 @@ import {
   SafeAreaView
 } from 'react-native';
 import colors from '../../colors';
-import Constants from 'expo-constants';
-//import * as Location from 'expo-location';
-//import * as Permissions from 'expo-permissions';
 import {
   Container, Header, Content, Card, CardItem, Thumbnail,
   Button, Icon, Left, Body, Right
@@ -16,6 +13,7 @@ import {
 import { Title } from 'react-native-paper';
 import * as Animatable from 'react-native-animatable';
 import StarRating from 'react-native-star-rating';
+
 // create a component
 
 class Home extends Component {
@@ -34,6 +32,7 @@ class Home extends Component {
         comments: '2378',
         ratings: 4,
         navigation: 'salon1',
+        image_uri:'https://firebasestorage.googleapis.com/v0/b/hair-salon-app-3047c.appspot.com/o/salon1.jpg?alt=media&token=f0cd1810-484c-4454-9a0c-d7a0c9a1a802',
       },
       {
         key: 1,
@@ -45,7 +44,7 @@ class Home extends Component {
         comments: '3488',
         ratings: 4.5,
         navigation: 'salon2',
-
+        image_uri:'https://firebasestorage.googleapis.com/v0/b/hair-salon-app-3047c.appspot.com/o/salon2.jpg?alt=media&token=37af7401-7374-4d70-8301-8c546356b734'
       },
       {
         key: 2,
@@ -57,7 +56,7 @@ class Home extends Component {
         comments: '1098',
         ratings: 3.6,
         navigation: 'salon3',
-
+        image_uri:'https://firebasestorage.googleapis.com/v0/b/hair-salon-app-3047c.appspot.com/o/salon3.jpg?alt=media&token=552e197e-6c44-4aee-bbf9-8671bafe2096'
       },
       {
         key: 3,
@@ -69,11 +68,11 @@ class Home extends Component {
         comments: '2000',
         ratings: 3,
         navigation: 'salon4',
-
+        image_uri:'https://firebasestorage.googleapis.com/v0/b/hair-salon-app-3047c.appspot.com/o/salon4.jpg?alt=media&token=5ac3b849-1e0f-4474-97d6-1e98bb1fbf9a'
       },
       {
         key: 4,
-        title: "HairDistrict.In",
+        title: "NailDistrict.In",
         tagline: "Be calm and chill",
         discount: '25%',
         time: '10AM to 9PM',
@@ -81,7 +80,7 @@ class Home extends Component {
         comments: '3488',
         ratings: 4.3,
         navigation: 'salon5',
-
+        image_uri:'https://firebasestorage.googleapis.com/v0/b/hair-salon-app-3047c.appspot.com/o/salon5.jpg?alt=media&token=677e4411-9628-4948-a2de-4523e41c1e8b'
       }
     ]
   };
@@ -106,12 +105,7 @@ class Home extends Component {
   }
   render() {
 
-    let text = '';
-    //if (this.state.errorMessage) {
-    //text = this.state.errorMessage;
-    //} else if (this.state.location) {
-    //text = JSON.stringify(this.state.location);
-    //}
+    // let text = '';
     return (
       <SafeAreaView flex={1}>
         <Container style={{ backgroundColor: 'black' }}>
@@ -134,7 +128,7 @@ class Home extends Component {
                     <CardItem button onPress={() => this.props.navigation.navigate(salon.navigation)}>
                       <Left>
                         <Thumbnail
-                          source={require('../../images/salon1.jpg')}
+                          source={{uri:salon.image_uri}}
                           style={{ width: 80, height: 60, borderRadius: 25, marginRight: 5 }} />
                         <Body style={{ alignItems: 'flex-start' }}>
                           <Title>{salon.title}</Title>

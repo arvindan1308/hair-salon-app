@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { View,StyleSheet,TouchableOpacity,Text} from 'react-native';
+import { View,StyleSheet,TouchableOpacity,Text,Image,BackHandler} from 'react-native'; 
 import colors from '../../colors';
+import {Header} from 'native-base';
 import {Calendar} from 'react-native-calendars';
 // create a component
+
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -18,14 +20,19 @@ class Home extends Component {
   _onPressBack(){
     const {goBack} = this.props.navigation
       goBack()
-  }
+  }  
+
   render() {
     return (
+      
       <View style={styles.container}>
-             <View >
+         <View style={styles.log}>  
+         <Image source={require('../../images/HSLogo.jpg')}
+          style={{height:180,width:200,marginTop:30,marginLeft:120}}/>
+          <Text style={{marginLeft:135,fontWeight:'bold',fontSize:22}}> BARBER'S BLADE</Text>
         <TouchableOpacity 
           onPress={() => this._onPressBack() }>
-          <Text >Back</Text>
+          <Text style={styles.sel}></Text>
         </TouchableOpacity>
                     <Text></Text>
                     <Text></Text>
@@ -37,7 +44,7 @@ class Home extends Component {
           markedDates={{[this.state.selected]: {selected: true}}}
           theme={{
             selectedDayBackgroundColor: 'black',
-            todayTextColor: 'grey',
+            todayTextColor: 'red',
             arrowColor: 'black',
           }}
         />
@@ -47,8 +54,7 @@ class Home extends Component {
               >
                 <Text style={styles.nextText }> Next</Text>
               </TouchableOpacity>
-      </View>
-    
+              </View>
     );
   }
 }
@@ -57,25 +63,27 @@ class Home extends Component {
 // define your styles
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex:2,
+    backgroundColor:'white'
   },
   calendar: {
-    borderTopWidth: 1,
-    paddingTop: 5,
-    borderBottomWidth: 1,
-    borderColor: 'green',
-    height: 350
+    marginTop:250,
+    borderTopWidth:3,
+    paddingTop: 10,
+    borderBottomWidth: 3,
+    borderColor: 'black',
+    height: 370,
+    borderBottomWidth:3,
   },
   nextButton:{
     display:'flex',
-  alignItems:'center',
+    alignItems:'center',
     justifyContent:'center',
     backgroundColor: colors.buttonColor,
     borderRadius: 30,
     width: 180,
     height: 60,
     textAlign:'center',
-  
     marginVertical: 120,
     marginHorizontal:120
   },
@@ -83,7 +91,19 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 24,
     fontWeight:'bold',
-    
+  },
+  cont:{
+    marginTop:120,
+    backgroundColor:'rgba(255,255,255,0.7)'
+  },
+  sel:{
+    fontWeight:'bold',
+    fontSize:22,
+    color:'white',
+    paddingLeft:10,
+  },
+  log:{
+    flex:1
   }
 });
 //make this component available to the app

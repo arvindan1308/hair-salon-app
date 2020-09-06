@@ -1,32 +1,59 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text, StyleSheet, TouchableOpacity,Image } from 'react-native';
 
 import firebase from 'firebase';
 
-import colors from '../../colors';
+import { Header, Left } from 'native-base';
+
+import { View } from 'react-native-animatable';
+
+import Divider from 'react-native-divider';
 
 // create a component
 
-class Home extends Component {
+class Profile extends Component {
   signOutUser = () => {
     firebase
       .auth()
       .signOut()
-      .then(function() {
+      .then(function () {
         alert('Logged Out');
       });
   };
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Profile Code Here</Text>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => this.signOutUser()}
-        >
-          <Text style={styles.buttonText}>Logout</Text>
-        </TouchableOpacity>
+      <View style={styles.view1}>
+        <Header style={{ backgroundColor: 'black' }} />
+        <View>
+          <Image source={require('../../images/HSLogo.jpg')}
+            style={{ height: 180, width: 200, marginTop: 30, marginLeft: 120 }} />
+          <Text style={{ marginLeft: 135, fontWeight: 'bold', fontSize: 22 }}> BARBER'S BLADE</Text>
+          <TouchableOpacity
+            style={styles.button1}
+            onPress={() => this.props.navigation.navigate('About1')}>
+            <Text style={styles.button1Text}>About</Text>
+          </TouchableOpacity>
+          <Divider borderColor='black' color="black" orientation="center"/>
+          <TouchableOpacity
+            style={styles.button2}
+            onPress={() => this.props.navigation.navigate('Help1')}>
+            <Text style={styles.button2Text}>Help</Text>
+          </TouchableOpacity>
+          <Divider borderColor='black' color="black" orientation="center"/>
+          <TouchableOpacity
+            style={styles.button4}
+            onPress={() => this.props.navigation.navigate('Product')}>
+            <Text style={styles.button4Text}>Review</Text>
+          </TouchableOpacity>
+          <Divider borderColor='black' color="black" orientation="center"/>
+          <TouchableOpacity
+            style={styles.button3}
+            onPress={() => this.signOutUser()}>
+            <Text style={styles.button3Text}>Logout</Text>
+          </TouchableOpacity>
+          <Divider borderColor='black' color="black" orientation="center"/>
+        </View>
       </View>
     );
   }
@@ -34,31 +61,100 @@ class Home extends Component {
 
 // define your styles
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: colors.bgColor,
-    flex: 1,
+  card1: {
+    height: 490,
+    width: 420,
+    marginTop: 150,
+    justifyContent: 'center',
+  },
+  view1: {
+    flex: 2,
+    backgroundColor: 'white',
+  },
+  button1: {
+    marginTop: 115,
     alignItems: 'center',
-    justifyContent: 'center'
-  },
-  buttonText: {
-    width: '100%',
-    textAlign: 'center',
-    fontSize: 16,
-    fontWeight: '500',
-    color: 'white'
-  },
-  button: {
-    width: 300,
+    justifyContent: 'center',
+    width: 420,
     height: 50,
-    backgroundColor: colors.buttonColor,
+    backgroundColor: 'rgba(255,255,255,0.6)',
     borderRadius: 25,
-    paddingHorizontal: 16,
+  },
+  button1Text: {
+    color: 'black',
+    fontSize: 18,
+    textAlign:'center',
+    fontWeight: 'bold',
+    // paddingRight:300
+  },
+  button2: {
+    width: 420,
+    height: 50,
+    backgroundColor: 'rgba(255,255,255,0.6)',
+    borderRadius: 25,
     fontSize: 16,
-    marginVertical: 10,
+    paddingVertical: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  button2Text: {
+    color: 'black',
+    fontSize: 18,
+    textAlign: 'center',
+    fontWeight: 'bold',
+  },
+  button3: {
+    width: 420,
+    height: 50,
+    backgroundColor: 'rgba(255,255,255,0.6)',
+    borderRadius: 25,
+    fontSize: 16,
+    paddingVertical: 16,
     alignItems: 'center',
     justifyContent: 'center'
-  }
-});
+  },
+  button3Text: {
+    color: 'black',
+    fontSize: 18,
+    textAlign: 'center',
+    fontWeight: 'bold',
+    alignItems: 'center',
+    // paddingRight:300
+  },
+  button4: {
+    width: 420,
+    height: 50,
+    backgroundColor: 'rgba(255,255,255,0.6)',
+    borderRadius: 25,
+    fontSize: 16,
+    paddingVertical: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  button4Text: {
+    color: 'black',
+    fontSize: 18,
+    fontWeight: 'bold',
+    // paddingRight:300
+  },
+  button5: {
+    width: 420,
+    height: 50,
+    backgroundColor: 'rgba(255,255,255,0.6)',
+    borderRadius: 25,
+    fontSize: 16,
+    paddingVertical: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  button5Text: {
+    color: 'black',
+    fontSize: 18,
+    fontWeight: 'bold',
+    // paddingRight:300
+  },
+}
+);
 
 //make this component available to the app
-export default Home;
+export default Profile;

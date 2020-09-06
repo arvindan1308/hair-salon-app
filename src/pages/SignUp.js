@@ -42,7 +42,6 @@ class SignUp extends Component {
       );
     }
   };
-
   render() {
     return (
       <View style={styles.container}>
@@ -147,7 +146,7 @@ const styles = StyleSheet.create({
   signUpText: {
     color: 'gray',
     fontSize: 16
-  }
+  },
 });
 
 //make this component available to the app

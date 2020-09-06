@@ -8,9 +8,9 @@ import {
   KeyboardAvoidingView,
   ScrollView,
   Alert,
-  StatusBar
+  StatusBar,
 } from 'react-native';
-//import * as firebase from 'firebase';
+import * as firebase from 'firebase';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 import Firebase from './src/config/firebase';
@@ -22,8 +22,11 @@ import salon2 from './src/pages/salon2';
 import salon3 from './src/pages/salon3';
 import salon4 from './src/pages/salon4';
 import salon5 from './src/pages/salon5';
-
+import About1 from './src/pages/About1';
+import Help1 from './src/pages/Help1';
+import Product from './src/pages/Product';
 import colors from './colors';
+
 class App extends React.Component {
   componentDidMount() {
     Firebase.auth().onAuthStateChanged(user => {
@@ -47,7 +50,7 @@ class App extends React.Component {
       .then(() => this.props.navigation.navigate('Dashboard'))
       .catch(error => Alert.alert('Login Failed', error.message));
   };
-
+  
   render() {
     return (
       <View style={styles.container}>
@@ -130,7 +133,16 @@ const AppNavigator = createStackNavigator(
     },
     salon5:{
       screen:salon5
-    }
+    },
+    About1:{
+      screen:About1
+    },
+    Help1:{
+      screen:Help1
+    },
+    Product:{
+      screen:Product
+    },
   },
   {
     initialRouteName: 'Login',
@@ -153,7 +165,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     fontSize: 16,
     color: 'gray',
-    marginVertical: 10
+    marginVertical: 10,
+    marginLeft:15
   },
   buttonText: {
     width: '100%',
@@ -171,25 +184,27 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginVertical: 10,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    marginLeft:15
   },
   signUpCont: {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'flex-end',
-    marginTop: 80
+    marginTop: 45,
+    marginLeft:20
   },
   signUpText: {
     color: 'gray',
-    fontSize: 16
+    fontSize: 16,
   },
   signUpText1: {
     width: '100%',
     fontWeight: '500',
     color: colors.buttonColor,
     fontSize: 16
-  }
+  },
 });
 
 export default createAppContainer(AppNavigator);
