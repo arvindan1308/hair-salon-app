@@ -108,10 +108,10 @@ class Home extends Component {
     // let text = '';
     return (
       <SafeAreaView flex={1}>
-        <Container style={{ backgroundColor: 'black' }}>
-          <Header style={{ backgroundColor: 'black' }} />
+        <Container style={{ backgroundColor: '#262625' }}>
+          <Header style={{ backgroundColor: '#262625' }} />
           <View style={{
-            backgroundColor: 'grey', height: 80,
+            backgroundColor: '#262625', height: 80,
             justifyContent: 'center', paddingHorizontal: 5
           }}>
             <Animatable.View animation="slideInRight" style={
@@ -129,7 +129,7 @@ class Home extends Component {
                       <Left>
                         <Thumbnail
                           source={{uri:salon.image_uri}}
-                          style={{ width: 80, height: 60, borderRadius: 25, marginRight: 5 }} />
+                          style={{ width: 80, height: 60, borderRadius: 25, marginRight: 5 ,}} />
                         <Body style={{ alignItems: 'flex-start' }}>
                           <Title>{salon.title}</Title>
                           <Text note>{salon.tagline}</Text>

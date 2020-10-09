@@ -1,27 +1,33 @@
-import React, { Component } from 'react';
+import React, { Component, useRef } from 'react';
 import {
-  View, TextInput, Text, StyleSheet, Image, ScrollView, SafeAreaView, TouchableOpacity
+  View, Text, StyleSheet, Image, ScrollView, SafeAreaView, TouchableOpacity,
 } from 'react-native';
 import {
-  Container, Header, Content, Card, CardItem, Left, Body, Button,
+  Container, Header, Content, Card, CardItem, Left, Body, Button,List ,ListView
 } from 'native-base';
 import { Ionicons, Entypo } from '@expo/vector-icons';
 import { Picker } from 'react-native-picker-dropdown';
 import Firebase from '../config/firebase';
 
+
 class salon1 extends Component {
 
   constructor(props, context) {
     super(props, context)
-    this.state = { time: '10am-12am', stylist: 'Abdul', salon: 'Kalpils Salon Academy',}
+    this.state = {
+      time: '', stylist: '',
+      salon: 'Kalpils Salon Academy',
+      date:'15/10/2020',
+      //myorder : [],
+    } 
     this.onValueChange = this.handleValueChange.bind(this)
   }
-
   saveToDB = () => {
-    Firebase.firestore().collection("Book").add({
+      Firebase.database().ref('Book/s1').push({
       Time: this.state.time,
       Stylist: this.state.stylist,
       Salon: this.state.salon,
+      Date: this.state.date,
     })
       .then(
         console.log("Document added")
@@ -30,9 +36,8 @@ class salon1 extends Component {
         console.error("Error adding document: ", error)
       );
   }
-
   deleteToDB = () => {
-    Firebase.firestore().collection('Book').doc('dc').delete()
+    Firebase.database().ref('Book/s1').remove()
       .then(
         console.log("Document Removed")
       )
@@ -40,6 +45,7 @@ class salon1 extends Component {
         console.error("Error removing document: ", error)
       );
   }
+
 
   handleValueChange(data, type) {
     if (type === 'time') {
@@ -52,9 +58,26 @@ class salon1 extends Component {
       })
     }
   }
-
-
+  // componentDidMount(){
+  //   Firebase.database().ref('Book/s1').on('value', snapshot => {
+  //     // if(snapshot.val()){
+  //     //   this.setState({myorder:Object.values(snapshot.val()) })
+  //           let data1 = snapshot.val();
+  //           let items= Object.values(data1);
+  //           this.setState({items})
+  //     }
+  //   )}
   render() {
+    // console.log(this.state)
+    //     const myitem =this.state.myorder.map(item =>{
+    //       return(
+    //         <ListView style = {{ justifyContent:"space-between" }} key={item.time}>
+    //           <Text>{item.time}</Text>
+    //           <Text>{item.stylist}</Text>
+    //           <Text>{item.salon}</Text>
+    //           </ListView>
+    //       )
+    //       })
     return (
       <SafeAreaView flex={1}>
         <ScrollView showsVerticalScrollIndicator={false}>
@@ -178,6 +201,9 @@ class salon1 extends Component {
                 </Card>
               </Content>
             </Container>
+            {/* <List> 
+              {myitem}
+            </List> */}
           </Container>
         </ScrollView>
       </SafeAreaView>
@@ -246,6 +272,6 @@ const styles = StyleSheet.create({
     marginTop: 15
   },
 });
-export default salon1;
 
+export default salon1;
 

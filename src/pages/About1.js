@@ -10,7 +10,7 @@ class About1 extends Component {
     <Container style={Styles.container}>
         <Header style={{backgroundColor:'black'}}/>
         <View style={{flex:1}}>
-        <Image source={require('../../images/HSLogo.jpg')}
+        <Image source={require('../../images/HSLogo.png')}
             style={{ height: 160, width: 200, marginTop: 30, marginLeft: 110 }} />
           <Text style={{ marginLeft: 120, fontWeight: 'bold', fontSize: 22 }}> BARBER'S BLADE</Text>
         <Text node style={{fontStyle:'italic',marginHorizontal:120}}>Your hair's destiny lies here</Text>

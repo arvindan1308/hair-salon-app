@@ -13,7 +13,7 @@
     "exit-on-double-back": "^1.0.1",
     "expo": "~36.0.0",
     "firebase": "^7.8.1",
-    "moment": "^2.24.0",
+    "moment": "^2.29.0",
     "native-base": "^2.13.8",
     "prop-types": "^15.7.2",
     "react": "~16.9.0",

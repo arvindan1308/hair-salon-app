@@ -27,10 +27,10 @@ class Logo extends Component {
       >
         <Image
           style={{ width: 120, height: 120, marginTop: 100 }}
-          source={require('../../images/HSLogo.jpg')}
+          source={require('../../images/HSLogo.png')}
         />
-        <Text style={{fontSize:24,fontWeight:'bold',fontStyle:'italic'}}>BARBER'S BLADE</Text>
-        <Text node style={{fontStyle:'italic'}}>Your hair's destiny lies here</Text>
+        <Text style={{fontSize:24,fontWeight:'bold',fontStyle:'italic',color:'black'}}>BARBER'S BLADE</Text>
+        <Text node style={{fontStyle:'italic',color:'grey',fontWeight:'bold'}}>Your hair's destiny lies here</Text>
       </KeyboardAvoidingView>
     );
   }

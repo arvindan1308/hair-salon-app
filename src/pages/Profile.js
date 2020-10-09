@@ -26,7 +26,7 @@ class Profile extends Component {
       <View style={styles.view1}>
         <Header style={{ backgroundColor: 'black' }} />
         <View>
-          <Image source={require('../../images/HSLogo.jpg')}
+          <Image source={require('../../images/HSLogo.png')}
             style={{ height: 180, width: 200, marginTop: 30, marginLeft: 120 }} />
           <Text style={{ marginLeft: 135, fontWeight: 'bold', fontSize: 22 }}> BARBER'S BLADE</Text>
           <TouchableOpacity

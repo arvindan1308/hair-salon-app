@@ -12,19 +12,30 @@ import Firebase from '../config/firebase';
 class salon3 extends Component {
   constructor(props, context) {
     super(props, context)
-    this.state = { time: '10am-12am', stylist: 'ALi' }
+    this.state = { time: '', stylist: '',salon: 'Envi Salon',date:'15/10/2020', }
     this.onValueChange = this.handleValueChange.bind(this)
   }
   saveToDB = () => {
-    Firebase.firestore().collection("Book").add({
+    Firebase.database().ref('/Book/s3').push({
       Time: this.state.time,
-      stylist: this.state.stylist,
+      Stylist: this.state.stylist,
+      Salon: this.state.salon,
+      Date: this.state.date,
     })
       .then(
         console.log("Document added")
       )
       .catch((error) =>
         console.error("Error adding document: ", error)
+      );
+  }
+  deleteToDB = () => {
+    Firebase.database().ref('/Book/s3').remove()
+      .then(
+        console.log("Document Removed")
+      )
+      .catch((error) =>
+        console.error("Error removing document: ", error)
       );
   }
   handleValueChange(data, type) {
@@ -133,7 +144,7 @@ class salon3 extends Component {
                   <View>
                   <TouchableOpacity
                     style={styles.nextButton}
-                    onPress={this.saveToDB}
+                    onPress={this.deleteToDB}
                   >
                     <Text style={styles.nextText}>Cancel</Text>
                   </TouchableOpacity>

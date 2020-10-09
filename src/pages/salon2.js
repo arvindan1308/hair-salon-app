@@ -12,13 +12,15 @@ import Firebase from '../config/firebase';
 class salon2 extends Component {
   constructor(props, context) {
     super(props, context)
-    this.state = { time: '10am-12am', stylist: 'Adi' }
+    this.state = { time: '', stylist: '', salon: 'Enrich Salon',date:'15/10/2020',}
     this.onValueChange = this.handleValueChange.bind(this)
   }
   saveToDB = () => {
-    Firebase.firestore().collection("Book").add({
+    Firebase.database().ref('/Book/s2').push({
       Time: this.state.time,
-      stylist: this.state.stylist,
+      Stylist: this.state.stylist,
+      Salon: this.state.salon,
+      Date: this.state.date,
     })
       .then(
         console.log("Document added")
@@ -27,7 +29,17 @@ class salon2 extends Component {
         console.error("Error adding document: ", error)
       );
   }
-    handleValueChange(data, type) {
+  deleteToDB = () => {
+    Firebase.database().ref('/Book/s2').remove()
+      .then(
+        console.log("Document Removed")
+      )
+      .catch((error) =>
+        console.error("Error removing document: ", error)
+      );
+  }
+
+  handleValueChange(data, type) {
     if (type === 'time') {
       this.setState({
         time: data
@@ -38,6 +50,7 @@ class salon2 extends Component {
       })
     }
   }
+
   render() {
     return (
       <SafeAreaView flex={1}>
@@ -125,7 +138,7 @@ class salon2 extends Component {
                 <View>
                   <TouchableOpacity
                     style={styles.nextButton1}
-                    onPress={this.saveToDB}
+                    onPress ={this.saveToDB}
                   >
                     <Text style={styles.nextText1}>Book</Text>
                   </TouchableOpacity>
@@ -133,7 +146,7 @@ class salon2 extends Component {
                   <View>
                   <TouchableOpacity
                     style={styles.nextButton}
-                    onPress={this.saveToDB}
+                    onPress= {this.deleteToDB}
                   >
                     <Text style={styles.nextText}>Cancel</Text>
                   </TouchableOpacity>

@@ -66,42 +66,42 @@ class App extends React.Component {
           enabled
           style={styles.container}
         >
-          <ScrollView>
-            <TextInput
-              style={styles.inputBox}
-              underlineColorAndroid='rgba(0,0,0,0)'
-              placeholder='Email'
-              placeholderTextColor='gray'
-              onChangeText={email => this.setState({ email })}
-            />
+            <ScrollView>
+              <TextInput
+                style={styles.inputBox}
+                underlineColorAndroid='rgba(0,0,0,0)'
+                placeholder='Email'
+                placeholderTextColor='black'
+                onChangeText={email => this.setState({ email })}
+              />
 
-            <TextInput
-              style={styles.inputBox}
-              underlineColorAndroid='rgba(0,0,0,0)'
-              placeholder='Password'
-              placeholderTextColor='gray'
-              secureTextEntry
-              onChangeText={password => this.setState({ password })}
-            />
-            <TouchableOpacity
-              style={styles.button}
-              onPress={() =>
-                this.logInUser(this.state.email, this.state.password)
-              }
-            >
-              <Text style={styles.buttonText}>Login</Text>
-            </TouchableOpacity>
-
-            <View style={styles.signUpCont}>
-              <Text style={styles.signUpText}>Don't have an account yet?</Text>
+              <TextInput
+                style={styles.inputBox}
+                underlineColorAndroid='rgba(0,0,0,0)'
+                placeholder='Password'
+                placeholderTextColor='black'
+                secureTextEntry
+                onChangeText={password => this.setState({ password })}
+              />
               <TouchableOpacity
-                style={styles.signUpButton}
-                onPress={() => this.props.navigation.navigate('SignUp')}
+                style={styles.button}
+                onPress={() =>
+                  this.logInUser(this.state.email, this.state.password)
+                }
               >
-                <Text style={styles.signUpText}> Sign Up!</Text>
+                <Text style={styles.buttonText}>Login</Text>
               </TouchableOpacity>
-            </View>
-          </ScrollView>
+
+              <View style={styles.signUpCont}>
+                <Text style={styles.signUpText}>Don't have an account yet?</Text>
+                <TouchableOpacity
+                  style={styles.signUpButton}
+                  onPress={() => this.props.navigation.navigate('SignUp')}
+                >
+                  <Text style={styles.signUpText}> Sign Up!</Text>
+                </TouchableOpacity>
+              </View>
+            </ScrollView>
         </KeyboardAvoidingView>
       </View>
     );
@@ -144,15 +144,15 @@ const AppNavigator = createStackNavigator(
       screen:Product
     },
   },
-  {
-    initialRouteName: 'Login',
-    headerMode: 'float '
-  }
-);
+    {
+      initialRouteName: 'Login',
+      headerMode: 'float '
+    }
+  );
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.bgColor,
+    backgroundColor:'white',
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center'
@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
   button: {
     width: 300,
     height: 50,
-    backgroundColor: colors.buttonColor,
+    backgroundColor: 'black',
     borderRadius: 25,
     paddingHorizontal: 16,
     fontSize: 16,
@@ -188,6 +188,7 @@ const styles = StyleSheet.create({
     marginLeft:15
   },
   signUpCont: {
+    color:'#f9f9f9',
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'center',
@@ -196,7 +197,7 @@ const styles = StyleSheet.create({
     marginLeft:20
   },
   signUpText: {
-    color: 'gray',
+    color: 'black',
     fontSize: 16,
   },
   signUpText1: {

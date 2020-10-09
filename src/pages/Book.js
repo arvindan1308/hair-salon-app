@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { View,StyleSheet,TouchableOpacity,Text,Image,BackHandler} from 'react-native'; 
-import colors from '../../colors';
-import {Header} from 'native-base';
+import { View,StyleSheet,TouchableOpacity,Text,Image,} from 'react-native'; 
 import {Calendar} from 'react-native-calendars';
+import Firebase from '../config/firebase';
 // create a component
 
 class Home extends Component {
@@ -15,7 +14,7 @@ class Home extends Component {
     this.setState({
       selected: day.dateString
     });
-    this.props.navigation.navigate('Slot', { bookingDate : day })
+    this.props.navigation.navigate('Locate', { bookingDate : day })
   }
   _onPressBack(){
     const {goBack} = this.props.navigation
@@ -27,9 +26,9 @@ class Home extends Component {
       
       <View style={styles.container}>
          <View style={styles.log}>  
-         <Image source={require('../../images/HSLogo.jpg')}
+         <Image source={require('../../images/HSLogo.png')}
           style={{height:180,width:200,marginTop:30,marginLeft:120}}/>
-          <Text style={{marginLeft:135,fontWeight:'bold',fontSize:22}}> BARBER'S BLADE</Text>
+          <Text style={{marginLeft:135,fontWeight:'bold',fontSize:22,color:'black'}}> BARBER'S BLADE</Text>
         <TouchableOpacity 
           onPress={() => this._onPressBack() }>
           <Text style={styles.sel}></Text>
@@ -40,12 +39,12 @@ class Home extends Component {
         <Calendar
           onDayPress={this.onDayPress}
           style={styles.calendar}
-          hideExtraDays
+          hideExtraDays = {true}
           markedDates={{[this.state.selected]: {selected: true}}}
           theme={{
             selectedDayBackgroundColor: 'black',
             todayTextColor: 'red',
-            arrowColor: 'black',
+            arrowColor: 'black',   
           }}
         />
          <TouchableOpacity
@@ -79,7 +78,7 @@ const styles = StyleSheet.create({
     display:'flex',
     alignItems:'center',
     justifyContent:'center',
-    backgroundColor: colors.buttonColor,
+    backgroundColor:'black',
     borderRadius: 30,
     width: 180,
     height: 60,
